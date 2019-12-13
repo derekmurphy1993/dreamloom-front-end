@@ -27,8 +27,25 @@ const getDreams = () => {
 }
 
 // get specific dream
-const getDream = () => {
-  console.log('placeholder!')
+const getDream = function (dreamId) {
+  return $.ajax({
+    url: config.apiUrl + '/dreams/' + dreamId,
+    method: 'GET',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
+
+// delete specific dream
+const deleteDream = function (dreamId) {
+  return $.ajax({
+    url: config.apiUrl + '/dreams/' + dreamId,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
 }
 
 const updateDream = formData => {
@@ -46,5 +63,6 @@ module.exports = {
   newDream,
   getDreams,
   getDream,
-  updateDream
+  updateDream,
+  deleteDream
 }
