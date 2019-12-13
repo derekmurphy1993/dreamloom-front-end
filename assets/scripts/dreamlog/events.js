@@ -15,7 +15,10 @@ const onNewDream = event => {
 
   api.newDream(formData)
     .then(ui.onSignupSuccess)
-    .catch(ui.onSignupFailure)
+    .then(function (data) {
+      onGetDreams(event)
+    })
+    .catch(console.error)
 }
 
 // Get all the dreams
@@ -29,39 +32,26 @@ const onGetDreams = (event) => {
 
 const onGetDream = event => {
   event.preventDefault()
-
-  api.getDream()
+  api.getDream($(event.target).data('id')) // puts the event.targets data id as param
     .then(ui.onGetDreamSuccess)
     .catch(console.error())
 }
 
-// const onSignIn = event => {
-//   event.preventDefault()
-//
-//   const form = event.target // form that was submited
-//   const formData = getFormFields(form)
-//
-//   api.signIn(formData)
-//     .then(ui.onSigninSuccess)
-//     .catch(ui.onSigninFailure)
-// }
-
-// const onChangePassword = event => {
-//   event.preventDefault()
-//
-//   const form = event.target
-//   const formData = getFormFields(form)
-//
-//   api.changePassword(formData)
-//     .then(ui.onChangePasswordSuccess)
-//     .catch(ui.onChangePasswordFailure)
-// }
+const onDelete = (event) => {
+  event.preventDefault()
+  api.deleteDream($(event.target).data('id')) // puts the event.targets data id as param
+    .then(function (data) {
+      onGetDreams(event)
+    })
+    .catch(console.error)
+}
 
 // to steamline the module.exports
 const addHandlers = event => {
   $('#new-dream').on('submit', onNewDream)
   $('#get-dreams').on('click', onGetDreams)
-  $('#view-dream').on('click', onGetDream)
+  $('#dreams-content').on('click', '.read', onGetDream)
+  $('#dreams-content').on('click', '.delete', onDelete)
 }
 
 // is game over

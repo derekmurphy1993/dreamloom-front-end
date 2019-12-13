@@ -3,6 +3,7 @@
 // const store = require('../store.js')
 // const store = require('../store')
 const showDreamsTemplate = require('../templates/dream-listing.handlebars')
+const showDreamTemplate = require('../templates/dream-expand.handlebars')
 
 // AUTHENTICATION
 
@@ -16,8 +17,10 @@ const onGetDreamsSuccess = (data) => {
 const onGetDreamsFailure = responseData => {
 }
 
-const onGetDreamSuccess = () => {
-  $('.retreived-dream').show()
+const onGetDreamSuccess = (data) => {
+  const showDreamHtml = showDreamTemplate({ dreams: data.dreams }) /// SHOW DATA????
+  $('.dreams-content').html(showDreamHtml)
+  $('.dream-list').show()
 }
 
 const onGetDreamFailure = responseData => {
