@@ -1,0 +1,24 @@
+{{#each dreams as |dream|}}
+  {{log dream}}
+  <section data-id="{{dream.id}}" class ='dream_listing'>
+    <div class="dream-box">
+    <h6>Date:</h6>
+    <h3>
+      {{dream.date}}
+    </h3>
+    <h6>Mood:</h6>
+    <h3>
+      {{dream.mood}}
+    </h3>
+    <h6>Author:</h6>
+    <h6>Body:</h6>
+    <p>
+    <h3>
+      {{limit dream.body 30}}
+    </h3>
+  </p>
+    <button data-id="{{dream.id}}" class="btn btn-danger delete"> Delete </button>
+  </div>
+  </section>
+
+{{/each}}
