@@ -40,7 +40,34 @@
     </div>
   </section>
 
-  <section class="after-auth">
+  <div class="after-auth">
+    <section class="newDream">
+      <form id="new-dream">
+        <input type="date" name="dream[date]" placeholder="YYYY-MM-DD">
+        <!-- placeholder as current date? did I handle that in back end? look into this later -->
+        <input type="text" name="dream[mood]" placeholder="well rested? stressed?">
+        <!-- While at it, look if placeholder for mood can rotate several examples (random in js probably) -->
+        <input type="text" name="dream[body]" placeholder="What you can remember, best of your ability">
+        <button class="btn btn-primary"> Save </button>
+      </form>
+    </section>
+
+<!-- show view of all dreams -->
+ <section class="getDreams">
+   <button id="get-dreams" class="btn btn-primary"> View Dreams </button>
+ </section>
+
+ <section class="retreivedDreams dream-list">
+   <div id="dreams-content" class="dreams-content"></div>
+ </section>
+
+ <!-- show view of single dreams -->
+ <section class="retreived-dream">
+   <div style="color:green;"> This is a specific dream! </div>
+   <div id="dream-content" class="content"></div>
+ </section>
+
+  <section class="user-settings">
     <form id="change-password">
       <input type="text" name="passwords[old]" placeholder="Old Password">
       <input type="text" name="passwords[new]" placeholder="New Password">
@@ -50,8 +77,9 @@
     <form id="sign-out">
       <button class="btn btn-danger"> Sign Out </button>
     </form>
-
   </section>
+
+</div>
 
 </div>
 <div class="col-2"> </div>

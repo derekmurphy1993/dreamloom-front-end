@@ -32,3 +32,34 @@ body {
 .after-auth {
   display: none;
 }
+
+.dream-list {
+  display: none;
+
+  .dream-box {
+    border: 2px solid #152f69;
+    padding: 8px;
+    margin-top: 10px;
+    color: #FFF;
+    border-radius: 8px;
+    background-color: #1f418c;
+  }
+  .content {
+    @include make-row;
+
+    &:empty {
+      &::before {
+        color: lighten($info, 25%);
+        content: 'Click Get Books';
+        font-size: 10vh;
+        line-height: .85;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.retreived-dream {
+  display: none;
+}

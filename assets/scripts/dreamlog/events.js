@@ -6,54 +6,62 @@ const ui = require('./ui')
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 
-// API SIGN IN
-const onSignUp = event => {
+// New Dream Log new-dream
+const onNewDream = event => {
   event.preventDefault()
 
   const form = event.target // form that was submited
   const formData = getFormFields(form) // get that form and run it
 
-  api.signUp(formData)
+  api.newDream(formData)
     .then(ui.onSignupSuccess)
     .catch(ui.onSignupFailure)
 }
 
-const onSignIn = event => {
+// Get all the dreams
+const onGetDreams = (event) => {
   event.preventDefault()
 
-  const form = event.target // form that was submited
-  const formData = getFormFields(form)
-
-  api.signIn(formData)
-    .then(ui.onSigninSuccess)
-    .catch(ui.onSigninFailure)
+  api.getDreams()
+    .then(ui.onGetDreamsSuccess)
+    .catch(ui.onGetDreamsFailure)
 }
 
-const onChangePassword = event => {
+const onGetDream = event => {
   event.preventDefault()
 
-  const form = event.target
-  const formData = getFormFields(form)
-
-  api.changePassword(formData)
-    .then(ui.onChangePasswordSuccess)
-    .catch(ui.onChangePasswordFailure)
+  api.getDream()
+    .then(ui.onGetDreamSuccess)
+    .catch(console.error())
 }
 
-const onSignOut = event => {
-  event.preventDefault()
-  // leaving out form data bc we arnt submiting data
-  api.signOut()
-    .then(ui.onSignOutSuccess)
-    .catch(ui.onSignOutFailure)
-}
+// const onSignIn = event => {
+//   event.preventDefault()
+//
+//   const form = event.target // form that was submited
+//   const formData = getFormFields(form)
+//
+//   api.signIn(formData)
+//     .then(ui.onSigninSuccess)
+//     .catch(ui.onSigninFailure)
+// }
+
+// const onChangePassword = event => {
+//   event.preventDefault()
+//
+//   const form = event.target
+//   const formData = getFormFields(form)
+//
+//   api.changePassword(formData)
+//     .then(ui.onChangePasswordSuccess)
+//     .catch(ui.onChangePasswordFailure)
+// }
 
 // to steamline the module.exports
 const addHandlers = event => {
-  $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
-  $('#change-password').on('submit', onChangePassword)
-  $('#sign-out').on('submit', onSignOut)
+  $('#new-dream').on('submit', onNewDream)
+  $('#get-dreams').on('click', onGetDreams)
+  $('#view-dream').on('click', onGetDream)
 }
 
 // is game over
