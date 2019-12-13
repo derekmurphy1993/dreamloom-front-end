@@ -17,8 +17,9 @@ const onGetDreamsSuccess = (data) => {
 const onGetDreamsFailure = responseData => {
 }
 
+// on expand dream
 const onGetDreamSuccess = (data) => {
-  const showDreamHtml = showDreamTemplate({ dreams: data.dreams }) /// SHOW DATA????
+  const showDreamHtml = showDreamTemplate({ dream: data.dream }) /// SHOW DATA????
   $('.dreams-content').html(showDreamHtml)
   $('.dream-list').show()
 }
