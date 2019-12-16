@@ -49,9 +49,9 @@ const deleteDream = function (dreamId) {
 }
 
 // update dream
-const updateDream = function (formData) {
+const updateDream = function (dreamId, formData) {
   return $.ajax({
-    url: config.apiUrl + `/dreams/` + store.dream.id,
+    url: config.apiUrl + `/dreams/` + dreamId,
     method: 'PATCH',
     headers: {
       Authorization: `Token token=${store.user.token}`
