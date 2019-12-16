@@ -1,0 +1,11 @@
+  {{log store.dream.id}}
+
+    <form data-id="{{store.dream.id}}" class ='dream_listing'>
+      <input type="date" name="dream[date]" placeholder="{{dream.date}}">
+      <!-- placeholder as current date? did I handle that in back end? look into this later -->
+      <input type="text" name="dream[mood]" placeholder="{{dream.mood}}">
+      <!-- While at it, look if placeholder for mood can rotate several examples (random in js probably) -->
+      <input type="text" name="dream[body]" placeholder="{{dream.body}}">
+      <button class="btn btn-primary save-dream"> Save </button>
+      <p> "{{store.dream.id}}" </p>
+    </form>

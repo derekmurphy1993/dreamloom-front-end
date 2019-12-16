@@ -48,7 +48,7 @@
         <input type="text" name="dream[mood]" placeholder="well rested? stressed?">
         <!-- While at it, look if placeholder for mood can rotate several examples (random in js probably) -->
         <input type="text" name="dream[body]" placeholder="What you can remember, best of your ability">
-        <button class="btn btn-primary"> Save </button>
+        <button class="btn btn-primary"> Create </button>
       </form>
     </section>
 
@@ -63,15 +63,15 @@
 
  <!-- show view of single dreams -->
  <section class="retreived-dream">
-   <div style="color:green;"> This is a specific dream! </div>
    <div id="dream-expand" class="content"></div>
+   <div id="edit-dreams" class="content"></div>
  </section>
 
   <section class="user-settings">
     <form id="change-password">
       <input type="text" name="passwords[old]" placeholder="Old Password">
       <input type="text" name="passwords[new]" placeholder="New Password">
-      <button class="btn btn-primary"> Update </button>
+      <button class="btn btn-primary save-dream"> Update </button>
     </form>
 
     <form id="sign-out">
