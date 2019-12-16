@@ -1,9 +1,10 @@
 'use strict'
 // Updates the UI
 // const store = require('../store.js')
-// const store = require('../store')
+const store = require('../store')
 const showDreamsTemplate = require('../templates/dream-listing.handlebars')
 const showDreamTemplate = require('../templates/dream-expand.handlebars')
+const editDreamTemplate = require('../templates/dream-edit.handlebars')
 
 // AUTHENTICATION
 
@@ -19,12 +20,25 @@ const onGetDreamsFailure = responseData => {
 
 // on expand dream
 const onGetDreamSuccess = (data) => {
+  store.dream = data.dream
+  console.log(store.dream)
   const showDreamHtml = showDreamTemplate({ dream: data.dream }) /// SHOW DATA????
   $('.dreams-content').html(showDreamHtml)
-  $('.dream-list').show()
 }
 
 const onGetDreamFailure = responseData => {
+}
+
+const onEditDreamsSuccess = (data) => {
+  $('.edit-dreams').show()
+  const editDreamHtml = editDreamTemplate({ dream: data.dream }) /// SHOW DATA????
+  console.log(store.dream)
+  $('.dreams-content').html(editDreamHtml)
+}
+
+const onSaveEditSuccess = data => {
+  $('.edit-dreams').hide()
+  store.dream = ''
 }
 //
 // const onSignupSuccess = () => {
@@ -71,5 +85,7 @@ module.exports = {
   onGetDreamSuccess,
   onGetDreamFailure,
   onGetDreamsSuccess,
-  onGetDreamsFailure
+  onGetDreamsFailure,
+  onEditDreamsSuccess,
+  onSaveEditSuccess
 }

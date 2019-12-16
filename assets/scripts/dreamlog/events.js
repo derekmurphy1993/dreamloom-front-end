@@ -30,6 +30,7 @@ const onGetDreams = (event) => {
     .catch(ui.onGetDreamsFailure)
 }
 
+// get single dream
 const onGetDream = event => {
   event.preventDefault()
   api.getDream($(event.target).data('id')) // puts the event.targets data id as param
@@ -37,6 +38,25 @@ const onGetDream = event => {
     .catch(console.error())
 }
 
+// trigger the edit form
+const onEditDream = (event) => {
+  event.preventDefault()
+  ui.onEditDreamsSuccess(event)
+}
+
+// save the edit form
+const onSaveDream = event => {
+  event.preventDefault()
+
+  const form = event.target // form that was submited
+  const formData = getFormFields(form) // get that form and run it
+
+  api.updateDream(formData)
+    .then(ui.onSaveEditSuccess)
+    .catch(console.error)
+}
+
+// delete dream
 const onDelete = (event) => {
   event.preventDefault()
   api.deleteDream($(event.target).data('id')) // puts the event.targets data id as param
@@ -51,6 +71,8 @@ const addHandlers = event => {
   $('#new-dream').on('submit', onNewDream)
   $('#get-dreams').on('click', onGetDreams)
   $('#dreams-content').on('click', '.read', onGetDream)
+  $('#dreams-content').on('click', '.edit', onEditDream)
+  $('#dreams-content').on('submit', '.save-dream', onSaveDream)
   $('#dreams-content').on('click', '.delete', onDelete)
 }
 
