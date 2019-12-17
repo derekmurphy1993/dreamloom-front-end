@@ -6,6 +6,10 @@ const ui = require('./ui')
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 
+const onMakeDreams = event => {
+  event.preventDefault()
+  ui.makeDreamSuccess()
+}
 // New Dream Log new-dream
 const onNewDream = event => {
   event.preventDefault()
@@ -15,10 +19,8 @@ const onNewDream = event => {
 
   api.newDream(formData)
     .then(ui.onCreateSuccess)
-    .then(function (data) {
-      onGetDreams(event)
-    })
-    .catch(console.error)
+    .then(onGetDreams(event))
+    .catch(ui.onCreateFail)
 }
 
 // Get all the dreams
@@ -35,7 +37,7 @@ const onGetDream = event => {
   event.preventDefault()
   api.getDream($(event.target).data('id')) // puts the event.targets data id as param
     .then(ui.onGetDreamSuccess)
-    .catch(console.error())
+    .catch(ui.onGetDreamFailure)
 }
 
 // trigger the edit form
@@ -54,8 +56,8 @@ const onSaveDream = event => {
   const formData = getFormFields(form) // get that form and run it
 
   api.updateDream(dreamId, formData)
-    .then(() => ui.onSaveEditSuccess())
-    .catch(console.error)
+    .then(ui.onSaveEditSuccess)
+    .catch(ui.onSaveEditFail)
 }
 
 // delete dream
@@ -65,17 +67,19 @@ const onDelete = (event) => {
     .then(function (data) {
       onGetDreams(event)
     })
-    .catch(console.error)
+    .then(ui.dreamDeleteSuccess)
+    .catch(ui.dreamDeleteFail)
 }
 
 // to steamline the module.exports
 const addHandlers = event => {
-  $('#new-dream').on('submit', onNewDream)
-  $('#get-dreams').on('click', onGetDreams)
-  $('#dreams-content').on('click', '.read', onGetDream)
-  $('#dreams-content').on('click', '.edit', onEditDream)
-  $('#dreams-content').on('submit', '.dreamForm', onSaveDream)
-  $('#dreams-content').on('click', '.delete', onDelete)
+  $('#new-dream').on('submit', onNewDream) // new dream!
+  $('#get-dreams').on('click', onGetDreams) // gets dreams
+  $('#make-dreams').on('click', onMakeDreams) // pull up create form
+  $('#dreams-content').on('click', '.read', onGetDream) // get dream
+  $('#dreams-content').on('click', '.edit', onEditDream) // pull up edit form
+  $('#edit-dreams').on('submit', '.dreamForm', onSaveDream) // save dream
+  $('#dreams-content').on('click', '.delete', onDelete) // delete dream
 }
 
 // is game over

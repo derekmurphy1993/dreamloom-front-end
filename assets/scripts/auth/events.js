@@ -29,6 +29,11 @@ const onSignIn = event => {
     .catch(ui.onSigninFailure)
 }
 
+const onSettings = event => {
+  event.preventDefault()
+  ui.onSettingsSuccess()
+}
+
 const onChangePassword = event => {
   event.preventDefault()
 
@@ -54,6 +59,7 @@ const addHandlers = event => {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
+  $('#get-settings').on('click', onSettings)
 }
 
 // is game over
