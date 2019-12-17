@@ -4,10 +4,13 @@
 const store = require('../store')
 
 // AUTHENTICATION
-const onSuccess = () => {
+const onSuccess = (message) => {
+  $('#feedback').text(message).css('color', 'green')
+  // the index and its value gets passed to the stored data
 }
 
-const onFailure = () => {
+const onFailure = (message) => {
+  $('#feedback').text(message).css('color', 'red')
 }
 
 const onSignupSuccess = () => {
@@ -29,8 +32,16 @@ const onSigninFailure = () => {
   onFailure('Username and Password Doesnt Match')
 }
 
+const onSettingsSuccess = () => {
+  $('.user-settings').show()
+}
+
+const onSettingsFail = () => {
+  onFailure('Error.')
+}
+
 const onChangePasswordSuccess = () => {
-  onSuccess('You changed your password')
+  onSuccess('Password Successfully Updated')
 }
 
 const onChangePasswordFailure = () => {
@@ -40,10 +51,10 @@ const onChangePasswordFailure = () => {
 const onSignOutSuccess = () => {
   store.user = {}
   onSuccess('Successfully Signed Out')
+  $('.dreams-content').html('')
   $('.after-auth').hide()
-  $('.before-newgame').hide()
-  $('.after-newgame').hide()
   $('.before-auth').show()
+  $('.getDreams').show()
 }
 
 const onSignOutFailure = () => {
@@ -58,5 +69,9 @@ module.exports = {
   onChangePasswordSuccess,
   onChangePasswordFailure,
   onSignOutSuccess,
-  onSignOutFailure
+  onSignOutFailure,
+  onSettingsSuccess,
+  onSettingsFail,
+  onFailure,
+  onSuccess
 }
