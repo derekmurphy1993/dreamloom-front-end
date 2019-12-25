@@ -4,7 +4,7 @@
 const showDreamsTemplate = require('../templates/dream-listing.handlebars')
 const showDreamTemplate = require('../templates/dream-expand.handlebars')
 const editDreamTemplate = require('../templates/dream-edit.handlebars')
-
+const createDreamTemplate = require('../templates/dream-create.handlebars')
 // AUTHENTICATION
 const onSuccess = (message) => {
   $('#feedback').text(message)
@@ -16,7 +16,11 @@ const onFailure = (message) => {
 }
 
 const makeDreamSuccess = () => {
-  $('.newDream').show()
+  $('.v').hide()
+  const createDreamsHtml = createDreamTemplate
+  $('.new-dream').html(createDreamsHtml)
+  $('.new-dream').show()
+  onSuccess('Ready for New Dream')
 }
 
 const makeDreamFail = () => {
@@ -35,9 +39,9 @@ const onCreateFail = () => {
 // On get dreams
 const onGetDreamsSuccess = (data) => {
   const showDreamsHtml = showDreamsTemplate({ dreams: data.dreams })
+  $('.v').hide()
   $('.dreams-content').html(showDreamsHtml)
   $('.dream-list').show()
-  $('.getDreams').hide()
   onSuccess('Dream List Retrieved')
 }
 
@@ -47,6 +51,7 @@ const onGetDreamsFailure = responseData => {
 
 // on expand dream
 const onGetDreamSuccess = (data) => {
+  $('.v').hide()
   const showDreamHtml = showDreamTemplate({ dream: data.dream }) /// SHOW DATA????
   $('.dreams-content').html(showDreamHtml)
   $('.getDreams').show()
@@ -58,6 +63,7 @@ const onGetDreamFailure = responseData => {
 }
 
 const onEditDreamsSuccess = (dreamId) => {
+  $('.v').hide()
   const editDreamHtml = editDreamTemplate({ dream: dreamId }) /// SHOW DATA????
   $('#edit-dreams').html(editDreamHtml)
   $('.dreams-content').hide()
@@ -77,6 +83,7 @@ const dreamDeleteFail = () => {
 }
 
 const onSaveEditSuccess = data => {
+  $('.v').hide()
   const showDreamHtml = showDreamTemplate({ dream: data.dream }) /// SHOW DATA????
   $('.dreams-content').html(showDreamHtml)
   $('.dreams-content').show()

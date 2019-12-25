@@ -16,14 +16,24 @@
   <div class="row">
     <div class="col-2"> </div>
     <div class="col-8">
-
-  <h1>DREAM JOURNAL</h1>
-
- <div id="feedback"> </div>
+<header>
+  <h1>DreamLoom</h1>
+  <h4>Threading Fates</h4>
+  <nav class="after-auth main-nav container"><ul class="row">
+    <li class='makeDreams col-4'>   <button id="make-dreams" class="btn btn-primary btn-nav"> New Dream </button>
+     </li>
+    <li class="getDreams col-4">    <button id="get-dreams" class="btn btn-primary btn-nav"> View Dreams </button>
+     </li>
+    <li class="account-edit col-4">   <button id="get-settings" class="btn btn-primary btn-nav"> Settings </button>
+     </li>
+    </ul>
+  </nav>
+</header>
+  <div id="feedback"> </div>
   <div id="message"></div>
 
   <section class="before-auth">
-    <div class="sign-in">
+    <div class="sign-up">
       <h2> Sign Up!</h2>
       <form id="sign-up">
         <input type="email" name="credentials[email]" placeholder="email">
@@ -31,6 +41,9 @@
         <input type="password" name="credentials[password_confirmation]" placeholder="confirm password">
         <button class="btn btn-primary"> New User </button>
       </form>
+    </div>
+
+    <div class="sign-in">
       <h2> Sign In!</h2>
       <form id="sign-in">
         <input type="email" name="credentials[email]" placeholder="email">
@@ -42,24 +55,11 @@
 
   <div class="after-auth">
 
-<!-- "a nav of sorts" -->
-<section class="makeDreams">
-  <button id="make-dreams" class="btn btn-primary"> New Dream </button>
-</section>
- <section class="getDreams">
-   <button id="get-dreams" class="btn btn-primary"> View Dreams </button>
- </section>
-<section class="account-edit">
-  <button id="get-settings" class="btn btn-primary"> Settings </button>
-</section>
+<!-- new dream -->
+ <section id="new-dream" class="new-dream">
 
-<section class='user-settings'>
- <form id="change-password">
-   <input type="text" name="passwords[old]" placeholder="Old Password">
-   <input type="text" name="passwords[new]" placeholder="New Password">
-   <button class="btn btn-primary"> Update </button>
- </form>
-</section>
+ </section>
+
  <!-- show view of single dreams -->
  <section class="retreived-dream">
    <div id="dream-expand" class="content"></div>
@@ -73,17 +73,14 @@
    </div>
  </section>
 
-<!-- new dream -->
- <section class="newDream">
-   <form id="new-dream">
-     <input type="date" name="dream[date]" placeholder="YYYY-MM-DD">
-     <!-- placeholder as current date? did I handle that in back end? look into this later -->
-     <input type="text" name="dream[mood]" placeholder="well rested? stressed?">
-     <!-- While at it, look if placeholder for mood can rotate several examples (random in js probably) -->
-     <input type="text" name="dream[body]" placeholder="What you can remember, best of your ability">
-     <button class="btn btn-primary"> Create </button>
-   </form>
- </section>
+<!-- Settings -->
+<section class='user-settings v'>
+ <form id="change-password">
+   <input type="text" name="passwords[old]" placeholder="Old Password">
+   <input type="text" name="passwords[new]" placeholder="New Password">
+   <button class="btn btn-primary"> Update </button>
+ </form>
+</section>
 
 <!-- log out -->
 <form id="sign-out">

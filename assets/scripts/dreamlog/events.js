@@ -73,9 +73,9 @@ const onDelete = (event) => {
 
 // to steamline the module.exports
 const addHandlers = event => {
-  $('#new-dream').on('submit', onNewDream) // new dream!
   $('#get-dreams').on('click', onGetDreams) // gets dreams
   $('#make-dreams').on('click', onMakeDreams) // pull up create form
+  $('#new-dream').on('submit', '.newDreamForm', onNewDream) // new dream!
   $('#dreams-content').on('click', '.read', onGetDream) // get dream
   $('#dreams-content').on('click', '.edit', onEditDream) // pull up edit form
   $('#edit-dreams').on('submit', '.dreamForm', onSaveDream) // save dream
