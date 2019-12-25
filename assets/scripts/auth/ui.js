@@ -33,6 +33,7 @@ const onSigninFailure = () => {
 }
 
 const onSettingsSuccess = () => {
+  $('.v').hide()
   $('.user-settings').show()
 }
 

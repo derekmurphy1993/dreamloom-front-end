@@ -41,6 +41,16 @@ body {
   display: none;
 }
 
+.main-nav ul li {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-nav {
+  background-color: blue;
+  width: 100%;
+}
+
 .dream-list {
   display: none;
 
