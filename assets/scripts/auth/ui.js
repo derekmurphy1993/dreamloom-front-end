@@ -15,10 +15,12 @@ const onFailure = (message) => {
 
 const onSignupSuccess = () => {
   onSuccess('Your Sign Up Was Successful, Please Sign In')
+  $('form').trigger('reset')
 }
 
 const onSignupFailure = () => {
   onFailure('Something went wrong')
+  $('form').trigger('reset')
 }
 
 const onSigninSuccess = responseData => {
@@ -26,10 +28,12 @@ const onSigninSuccess = responseData => {
   onSuccess('Your Sign In Was Successful')
   $('.after-auth').show()
   $('.before-auth').hide()
+  $('form').trigger('reset')
 }
 
 const onSigninFailure = () => {
   onFailure('Username and Password Doesnt Match')
+  $('form').trigger('reset')
 }
 
 const onSettingsSuccess = () => {
@@ -43,10 +47,12 @@ const onSettingsFail = () => {
 
 const onChangePasswordSuccess = () => {
   onSuccess('Password Successfully Updated')
+  $('form').trigger('reset')
 }
 
 const onChangePasswordFailure = () => {
   onFailure('Oh no.')
+  $('form').trigger('reset')
 }
 
 const onSignOutSuccess = () => {
