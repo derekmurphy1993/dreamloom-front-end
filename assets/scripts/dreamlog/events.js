@@ -64,9 +64,6 @@ const onSaveDream = event => {
 const onDelete = (event) => {
   event.preventDefault()
   api.deleteDream($(event.target).data('id')) // puts the event.targets data id as param
-    .then(function (data) {
-      onGetDreams(event)
-    })
     .then(ui.dreamDeleteSuccess)
     .catch(ui.dreamDeleteFail)
 }

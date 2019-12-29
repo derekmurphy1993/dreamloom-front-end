@@ -75,6 +75,7 @@ const onEditDreamFail = () => {
 }
 
 const dreamDeleteSuccess = () => {
+  $('.v').hide()
   onFailure('Dream successfully deleted.')
 }
 
@@ -92,6 +93,7 @@ const onSaveEditSuccess = data => {
 
 const onSaveEditFail = () => {
   onFailure("Couldn't save changes.")
+  $('form').trigger('reset')
 }
 
 module.exports = {
