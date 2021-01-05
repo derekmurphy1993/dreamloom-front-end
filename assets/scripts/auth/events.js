@@ -53,6 +53,14 @@ const onSignOut = event => {
     .catch(ui.onSignOutFailure)
 }
 
+const onDemoLogin = () => {
+  event.preventDefault()
+  console.log('it click')
+  api.demoSignIn()
+    .then(ui.onSigninSuccess)
+    .catch(ui.onSigninFailure)
+}
+
 // to steamline the module.exports
 const addHandlers = event => {
   $('#sign-up').on('submit', onSignUp)
@@ -60,6 +68,7 @@ const addHandlers = event => {
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
   $('#get-settings').on('click', onSettings)
+  $('#DEMO-LOGIN').on('click', onDemoLogin) // demo log in
 }
 
 // is game over

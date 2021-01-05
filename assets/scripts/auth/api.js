@@ -40,9 +40,23 @@ const signOut = formData => {
   })
 }
 
+const demoSignIn = () => {
+  return $.ajax({
+    url: config.apiUrl + '/sign-in',
+    method: 'POST',
+    data: {
+      credentials: {
+        email: 'Dreamer@DreamLoom',
+        password: 'xf!2@1^3'
+      }
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  demoSignIn
 }
