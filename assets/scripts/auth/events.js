@@ -4,8 +4,8 @@
 // const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
 const api = require('./api')
-// const logApi = require('../dreamlog/api')
 const getFormFields = require('../../../lib/get-form-fields')
+const dream = require('../dreamlog/api')
 
 // API SIGN IN
 const onSignUp = event => {
@@ -54,11 +54,20 @@ const onSignOut = event => {
     .catch(ui.onSignOutFailure)
 }
 
+const demodata = {
+  dream: {
+    body: 'sup',
+    date: '2021-01-11',
+    mood: 'Tired'
+  }
+}
+
 const onDemoLogin = () => {
   event.preventDefault()
-  console.log('it click')
+
   api.demoSignIn()
     .then(ui.onSigninSuccess)
+    .then(dream.deleteDreams)
     .catch(ui.onSigninFailure)
 }
 

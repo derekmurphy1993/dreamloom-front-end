@@ -28,6 +28,7 @@ const onSigninSuccess = responseData => {
   onSuccess('Your Sign In Was Successful')
   $('.after-auth').show()
   $('.before-auth').hide()
+  $('.demo').hide()
   $('form').trigger('reset')
 }
 
@@ -61,6 +62,7 @@ const onSignOutSuccess = () => {
   $('.dreams-content').html('')
   $('.after-auth').hide()
   $('.before-auth').show()
+  $('.demo').show()
   $('.getDreams').show()
 }
 

@@ -70,7 +70,7 @@ const onDelete = (event) => {
 }
 
 // delete dream
-const onDeleteAll = (event) => {
+const onDeleteAll = () => {
   event.preventDefault()
 
   api.deleteDreams() // puts the event.targets data id as param
