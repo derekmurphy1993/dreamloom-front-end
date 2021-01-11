@@ -61,9 +61,19 @@ const onSaveDream = event => {
 }
 
 // delete dream
+
 const onDelete = (event) => {
   event.preventDefault()
   api.deleteDream($(event.target).data('id')) // puts the event.targets data id as param
+    .then(ui.dreamDeleteSuccess)
+    .catch(ui.dreamDeleteFail)
+}
+
+// delete dream
+const onDeleteAll = (event) => {
+  event.preventDefault()
+
+  api.deleteDreams() // puts the event.targets data id as param
     .then(ui.dreamDeleteSuccess)
     .catch(ui.dreamDeleteFail)
 }
@@ -76,9 +86,9 @@ const addHandlers = event => {
   $('#dreams-content').on('click', '.read', onGetDream) // get dream
   $('#dreams-content').on('click', '.edit', onEditDream) // pull up edit form
   $('#edit-dreams').on('submit', '.dreamForm', onSaveDream) // save dream
+  $('#deleteModal').on('click', '.delete_all', onDeleteAll) // delete all
   $('#dreams-content').on('click', '.delete', onDelete) // delete dream
 }
-
 // is game over
 
 module.exports = {

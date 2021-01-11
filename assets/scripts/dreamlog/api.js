@@ -60,10 +60,21 @@ const updateDream = function (dreamId, formData) {
   })
 }
 
+const deleteDreams = () => {
+  return $.ajax({
+    url: config.apiUrl + `/delete-all`,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
+
 module.exports = {
   newDream,
   getDreams,
   getDream,
   updateDream,
-  deleteDream
+  deleteDream,
+  deleteDreams
 }
