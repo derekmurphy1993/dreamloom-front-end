@@ -4,6 +4,7 @@
 // const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
 const api = require('./api')
+const chart = require('./chart')
 const getFormFields = require('../../../lib/get-form-fields')
 
 const onMakeDreams = event => {
@@ -64,6 +65,7 @@ const onSaveDream = event => {
 
 const onDelete = (event) => {
   event.preventDefault()
+
   api.deleteDream($(event.target).data('id')) // puts the event.targets data id as param
     .then(ui.dreamDeleteSuccess)
     .catch(ui.dreamDeleteFail)
@@ -78,10 +80,18 @@ const onDeleteAll = () => {
     .catch(ui.dreamDeleteFail)
 }
 
+const onGetChart = (event) => {
+  event.preventDefault()
+
+  $('.sleep-chart').show()
+  chart.sleepChart()
+}
+
 // to steamline the module.exports
 const addHandlers = event => {
   $('#get-dreams').on('click', onGetDreams) // gets dreams
   $('#make-dreams').on('click', onMakeDreams) // pull up create form
+  $('#get-chart').on('click', onGetChart) // gets dreams
   $('#new-dream').on('submit', '.newDreamForm', onNewDream) // new dream!
   $('#dreams-content').on('click', '.read', onGetDream) // get dream
   $('#dreams-content').on('click', '.edit', onEditDream) // pull up edit form

@@ -54,13 +54,11 @@ const onSignOut = event => {
     .catch(ui.onSignOutFailure)
 }
 
-const demodata = {
-  dream: {
-    body: 'sup',
-    date: '2021-01-11',
-    mood: 'Tired'
-  }
-}
+// const demodata = {
+//   body: 'sup',
+//   date: '2021-01-11',
+//   mood: 'Tired'
+// }
 
 const onDemoLogin = () => {
   event.preventDefault()

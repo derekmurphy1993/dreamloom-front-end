@@ -20,11 +20,13 @@
   <h1>DreamLoom</h1>
   <h4>Threading Fates</h4>
   <nav class="after-auth main-nav container"><ul class="row">
-    <li class='makeDreams col-4'>   <button id="make-dreams" class="btn btn-primary btn-nav"> New Dream </button>
+    <li class='makeDreams col-3'>   <button id="make-dreams" class="btn btn-primary btn-nav"> New Dream </button>
      </li>
-    <li class="getDreams col-4">    <button id="get-dreams" class="btn btn-primary btn-nav"> View Dreams </button>
+    <li class="getDreams col-3">    <button id="get-dreams" class="btn btn-primary btn-nav"> View Dreams </button>
      </li>
-    <li class="account-edit col-4">   <button id="get-settings" class="btn btn-primary btn-nav"> Settings </button>
+    <li class="getDreams col-3">    <button id="get-chart" class="btn btn-primary btn-nav"> Sleep Chart </button>
+     </li>
+    <li class="account-edit col-3">   <button id="get-settings" class="btn btn-primary btn-nav"> Settings </button>
      </li>
     </ul>
   </nav>
@@ -75,6 +77,13 @@
    <div id="dreams-content" class="dreams-content">
    </div>
  </section>
+
+ <!-- Sleep Chart -->
+
+<section class="sleep-chart">
+ <canvas id="myChart" width="400" height="400"></canvas>
+</section>
+
 
 <!-- Settings -->
 <section class='user-settings v'>
