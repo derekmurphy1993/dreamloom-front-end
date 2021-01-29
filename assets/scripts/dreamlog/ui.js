@@ -5,6 +5,8 @@ const showDreamsTemplate = require('../templates/dream-listing.handlebars')
 const showDreamTemplate = require('../templates/dream-expand.handlebars')
 const editDreamTemplate = require('../templates/dream-edit.handlebars')
 const createDreamTemplate = require('../templates/dream-create.handlebars')
+const chart = require('./chart')
+
 // AUTHENTICATION
 const onSuccess = (message) => {
   $('#feedback').text(message)
@@ -96,6 +98,12 @@ const onSaveEditFail = () => {
   $('form').trigger('reset')
 }
 
+const onGetChartSuccess = () => {
+  $('.v').hide()
+  $('.sleep-chart').show()
+  chart.sleepChart()
+}
+
 module.exports = {
   onCreateSuccess,
   onGetDreamSuccess,
@@ -112,5 +120,6 @@ module.exports = {
   onCreateFail,
   makeDreamFail,
   dreamDeleteFail,
-  dreamDeleteSuccess
+  dreamDeleteSuccess,
+  onGetChartSuccess
 }

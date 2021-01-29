@@ -4,7 +4,6 @@
 // const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
 const api = require('./api')
-const chart = require('./chart')
 const getFormFields = require('../../../lib/get-form-fields')
 
 const onMakeDreams = event => {
@@ -83,8 +82,7 @@ const onDeleteAll = () => {
 const onGetChart = (event) => {
   event.preventDefault()
 
-  $('.sleep-chart').show()
-  chart.sleepChart()
+  ui.onGetChartSuccess()
 }
 
 // to steamline the module.exports
