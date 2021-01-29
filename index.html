@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Oneironaut Log</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <div class="container">
+  <div class="row">
+    <div class="col-2"> </div>
+    <div class="col-8">
+<header>
+  <h1>DreamLoom</h1>
+  <h4>Threading Fates</h4>
+  <nav class="after-auth main-nav container"><ul class="row">
+    <li class='makeDreams col-3'>   <button id="make-dreams" class="btn btn-primary btn-nav"> New Dream </button>
+     </li>
+    <li class="getDreams col-3">    <button id="get-dreams" class="btn btn-primary btn-nav"> View Dreams </button>
+     </li>
+    <li class="getDreams col-3">    <button id="get-chart" class="btn btn-primary btn-nav"> Sleep Chart </button>
+     </li>
+    <li class="account-edit col-3">   <button id="get-settings" class="btn btn-primary btn-nav"> Settings </button>
+     </li>
+    </ul>
+  </nav>
+</header>
+  <div id="feedback"> </div>
+  <div id="message"></div>
+
+  <section class="before-auth">
+    <div class="sign-up">
+      <h2> Sign Up!</h2>
+      <form id="sign-up">
+        <input type="email" name="credentials[email]" placeholder="email">
+        <input type="password" name="credentials[password]" placeholder="password">
+        <input type="password" name="credentials[password_confirmation]" placeholder="confirm password">
+        <button class="btn btn-primary"> New User </button>
+      </form>
+    </div>
+
+    <div class="sign-in">
+      <h2> Sign In!</h2>
+      <form id="sign-in">
+        <input type="email" name="credentials[email]" placeholder="email">
+        <input type="password" name="credentials[password]" placeholder="password">
+        <button class="btn btn-primary"> Log In </button>
+      </form>
+    </div>
+  </section>
+
+  <div class="demo"><button type="button" class="btn btn-warning" id="DEMO-LOGIN">DEMO LOGIN</button></div>
+
+
+  <div class="after-auth">
+
+<!-- new dream -->
+ <section id="new-dream" class="new-dream">
+
+ </section>
+
+ <!-- show view of single dreams -->
+ <section class="retreived-dream">
+   <div id="dream-expand" class="content"></div>
+ </section>
+ <div id="edit-dreams" class="content"></div>
+
+
+
+ <section class="retreivedDreams dream-list">
+   <div id="dreams-content" class="dreams-content">
+   </div>
+ </section>
+
+ <!-- Sleep Chart -->
+
+<section class="sleep-chart v">
+ <canvas id="myChart" width="400" height="400"></canvas>
+</section>
+
+
+<!-- Settings -->
+<section class='user-settings v'>
+ <form id="change-password">
+   <input type="text" name="passwords[old]" placeholder="Old Password">
+   <input type="text" name="passwords[new]" placeholder="New Password">
+   <button class="btn btn-primary"> Update </button>
+ </form>
+ <button type="button" class="btn btn-secondary delete-all" data-toggle="modal" data-target="#deleteModal">
+  Delete Dream Data
+</button>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3> Permanently delete your Dreams? </h3>
+        <p> After you delete your data, all stored dreams will be deleted. Are you sure you want to continue? </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger delete_all" data-dismiss="modal">Delete Data</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- log out -->
+<form id="sign-out">
+  <button class="btn btn-danger"> Sign Out </button>
+</form>
+
+</div>
+
+</div>
+<div class="col-2"> </div>
+</div></div>
+
+</body>
+
+</html>
